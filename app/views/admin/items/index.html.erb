@@ -18,8 +18,15 @@
             <td><%= item.id %></td>
             <td><%= item.name %></td>
             <td><%= item.price %></td>
-            <td><%= item.genre_id %></td>
-            <td><%= item.is_active %></td>
+            <td><%= item.genre.name %></td>
+            <!--<td><%#= item.is_active %></td>-->
+            <td>
+              <% if item.is_active %>
+                販売中
+              <% elsif %>
+                販売停止中
+              <% end %>
+            </td>
           </tr>
         </tbody>
         <% end %>
