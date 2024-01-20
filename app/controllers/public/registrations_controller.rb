@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
+  def new
+   @user = User.new
+   @error_message = "登録できませんでした"
+   @resource = User.new
+  end
+
+  def create
+   user = User.new(user_params)
+   user.save
+   redirect_to '/top'
+  end
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
