@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2024_01_19_084906) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -60,6 +61,14 @@ ActiveRecord::Schema.define(version: 2024_01_19_084906) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_name_kana"
+    t.string "first_name_kana"
+    t.integer "postal_code"
+    t.string "address"
+    t.integer "phone_number"
+    t.integer "status"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -70,12 +79,7 @@ ActiveRecord::Schema.define(version: 2024_01_19_084906) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "items", force: :cascade do |t|
-    t.integer "genre_id", null: false
-    t.string "name", null: false
-    t.text "introduction", null: false
-    t.integer "price", null: false
-    t.boolean "is_active", default: true, null: false
+
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

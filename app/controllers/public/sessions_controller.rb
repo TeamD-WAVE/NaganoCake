@@ -1,6 +1,24 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+    def new
+   @user = User.new
+   @error_message = "ログインできませんでした"
+   @resource = User.new
+  end
+
+  def create
+   user = User.new(user_params)
+   user.save
+   redirect_to '/top'
+  end
+  
+  def destroy
+    session[:user_id] = nil
+    redirect_to request.referer
+  end
+  
+  
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
