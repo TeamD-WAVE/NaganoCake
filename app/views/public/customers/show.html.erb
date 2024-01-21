@@ -5,7 +5,7 @@
    <td>
     <div class='row'>
      <% if current_user == @customer %>
-     <%= link_to edit_customer_path(customer), class: "btn btn-outline-success btn-block" do %>
+     <%= link_to edit_customer_path(@customer), class: "btn btn-outline-success btn-block" do %>
      <i>編集する</i>
      <% end %>
      <% end %>
@@ -42,7 +42,7 @@
    <td>
     <div class='row'>
      <% if current_user == @customer %>
-     <%= link_to mailing_addresses_path(customer), class: "btn btn-outline-primary btn-block" do %>
+     <%= link_to mailing_addresses_path(@customer), class: "btn btn-outline-primary btn-block" do %>
      <i>一覧を見る</i>
      <% end %>
      <% end %>
@@ -54,7 +54,7 @@
    <td>
     <div class='row'>
      <% if current_user == @customer %>
-     <%= link_to customer_orders_path(customer), class: "btn btn-outline-primary btn-block" do %>
+     <%= link_to customer_orders_path(@customer), class: "btn btn-outline-primary btn-block" do %>
      <i>一覧を見る</i>
      <% end %>
      <% end %>

@@ -8,9 +8,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-   customer = Customer.new(user_params)
+   customer = Customer.new(customer_params)
    customer.save
-   redirect_to '/top'
+   redirect_to '/customers/my_page'
   end
 
   # before_action :configure_sign_up_params, only: [:create]
