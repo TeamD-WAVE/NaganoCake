@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  namespace :public do
+    get 'cart_items/index'
+  end
+  get 'cart_items/index'
   devise_for :admins, skip: :all
   devise_scope :admin do
     get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
