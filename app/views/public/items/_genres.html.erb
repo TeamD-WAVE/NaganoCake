@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <h4>ジャンル</h4>
+  </thead>
+  <tbody>
+    <% genres.each do |genre| %>
+    <tr>
+      <% if genre.is_active == true %>
+      <td>
+        <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %>
+      </td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
