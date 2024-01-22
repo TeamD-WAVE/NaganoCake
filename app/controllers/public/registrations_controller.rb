@@ -2,15 +2,15 @@
 
 class Public::RegistrationsController < Devise::RegistrationsController
   def new
-   @user = User.new
+   @customer = Customer.new
    @error_message = "登録できませんでした"
-   @resource = User.new
+   @resource = Customer.new
   end
 
   def create
-   user = User.new(user_params)
-   user.save
-   redirect_to '/top'
+   customer = Customer.new(customer_params)
+   customer.save
+   redirect_to '/customers/my_page'
   end
 
   # before_action :configure_sign_up_params, only: [:create]

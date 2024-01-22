@@ -56,13 +56,20 @@ Rails.application.routes.draw do
   get "about" => "customer/home#about"
   patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
 
-  scope module: 'customer' do
-      root 'home#top'
-      resources :customers, only:[:show, :edit, :update] do
-        member do
-          get 'quit'
-        end
+  scope module: 'public' do
+       root 'homes#top'
+      get '/customers/my_page', to: '/public/customers#show', as: 'customer_my_page'
+      get '/customers/information/edit', to: 'public/customers#edit', as: 'edit_customer'
+      patch 'customers/information', to: 'public/customers#update', as: 'information'
+      get 'customers/quit', to: 'customers#quit', as: 'quit'
+
+      resources :customers do
+      member do
+        patch :withdraw
+        get :unsubscribe
       end
+      end
+
       resources :'mailing_addresses', only:[:index, :create, :edit, :update, :destroy]
   end
 
