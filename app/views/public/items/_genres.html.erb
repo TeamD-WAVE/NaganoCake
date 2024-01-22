@@ -1,15 +1,15 @@
 <table>
   <thead>
-    <h4>ジャンル</h4>
+    <h4>ジャンル検索</h4>
   </thead>
   <tbody>
     <% genres.each do |genre| %>
     <tr>
-      <% if genre.is_active == true %>
+      <%# if genre.is_active == true %>
       <td>
         <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %>
       </td>
-      <% end %>
+      <%# end %>
     </tr>
     <% end %>
   </tbody>
