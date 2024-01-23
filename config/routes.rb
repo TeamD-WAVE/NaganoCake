@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     get 'cart_items/index'
+    get 'genres/:id/search' => 'searches#genre_search'
   end
   get 'cart_items/index'
   devise_for :admins, skip: :all
@@ -34,18 +35,19 @@ Rails.application.routes.draw do
     resources :order_items, only: [:update]
 	end
 
-  get  'items' => 'customer/items#index', as: "customer_items"
-  get  'items/:id' => 'customer/items#show', as: "customer_item"
-  get 'cart_items' => 'customer/cart_items#index', as: "cart_items"
-  post 'cart_items' => 'customer/cart_items#create'
-  patch 'cart_items/:id' => 'customer/cart_items#update',as: "cart_item"
-  delete 'cart_items/:id' => 'customer/cart_items#destroy', as: "destroy_cart_item"
-  delete 'cart_items' => 'customer/cart_items#destroy_all', as: "destroy_cart_items"
+  # get  'items' => 'customer/items#index', as: "customer_items"
+  # get  'items/:id' => 'customer/items#show', as: "customer_item"
+  # get 'cart_items' => 'customer/cart_items#index', as: "cart_items"
+  # post 'cart_items' => 'customer/cart_items#create'
+  # patch 'cart_items/:id' => 'customer/cart_items#update',as: "cart_item"
+  # delete 'cart_items/:id' => 'customer/cart_items#destroy', as: "destroy_cart_item"
+  # delete 'cart_items' => 'customer/cart_items#destroy_all', as: "destroy_cart_items"
 
   get "admin/orders" => "admin/orders#index", as: "admin_orders"
   get "admin/orders/:id" => "admin/orders#show", as: "admin_order"
   patch "admin/orders/:id" => "admin/orders#update"
-  get '/search' => 'search#search'
+  # get '/search' => 'search#search'
+  
 
   get "orders/new" => "customer/orders#new"
   get "orders/confirm" => "customer/orders#confirm"
@@ -58,6 +60,12 @@ Rails.application.routes.draw do
 
   scope module: 'public' do
        root 'homes#top'
+       resources :items, only:[:index, :show]
+       resources :cart_items, only:[:index, :update, :destroy, :create] do
+         collection do
+           delete 'destroy_all'
+         end
+       end
       get '/customers/my_page', to: '/public/customers#show', as: 'customer_my_page'
       get '/customers/information/edit', to: 'public/customers#edit', as: 'edit_customer'
       patch 'customers/information', to: 'public/customers#update', as: 'information'

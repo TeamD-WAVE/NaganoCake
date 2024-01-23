@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <!--ジャンル選択のサイドバー-->
+      <%= render 'public/searches/genre' %>
+    </div>
+    <div class="col-9">
+      <h2>商品一覧(全<%= @items.count %>件)</h2>
+      <table>
+        <tbody>
+          <tr>
+          <td>
+            <% @items.each do |item| %>
+                <%= link_to item_path(item.id) do %>
+                  <%= image_tag item.image, size: "200x200" %>
+                  <%= item.name %><br>
+                  ¥<%= item.price %>
+                <% end %>
+            <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
