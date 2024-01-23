@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     get 'cart_items/index'
+    get 'genres/:id/search' => 'searches#genre_search'
   end
   get 'cart_items/index'
   devise_for :admins, skip: :all
@@ -45,7 +46,8 @@ Rails.application.routes.draw do
   get "admin/orders" => "admin/orders#index", as: "admin_orders"
   get "admin/orders/:id" => "admin/orders#show", as: "admin_order"
   patch "admin/orders/:id" => "admin/orders#update"
-  get '/search' => 'search#search'
+  # get '/search' => 'search#search'
+  
 
   get "orders/new" => "customer/orders#new"
   get "orders/confirm" => "customer/orders#confirm"
