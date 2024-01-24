@@ -23,7 +23,15 @@
      </td>
      <td class="<%= customer.is_active ? 'text-success' : '' %>">
       <%= customer.is_active ? "有効" : "退会" %>
+      <%= if customer.is_active %>
+       有効
+      <% elsif %>
+       退会
+      <% end 
      </td>
    </tr>
    <% end %>
  </tbody>
+ 
+ <%= paginate @customers %>
+ 

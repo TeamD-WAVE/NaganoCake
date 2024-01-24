@@ -4,60 +4,60 @@
    <td>登録情報</td>
    <td>
     <div class='row'>
-     <% if current_user == @customer %>
      <%= link_to edit_customer_path(@customer), class: "btn btn-outline-success btn-block" do %>
      <i>編集する</i>
      <% end %>
-     <% end %>
     </div>
    </td>
  </tr>
- <tr>
+
+ <div class="field">
   <th>氏名</th>
   <th><%= @customer.last_name %>　<%= @customer.first_name %></th>
- </tr>
- <tr>
+ </div>
+
+ <div class="field">
   <th>カナ</th>
   <th><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></th>
- </tr>
- <tr>
+ </div>
+
+ <div class="field">
    <th>郵便番号</th>
    <th><%= @customer.postal_code %></th>
- </tr>
- <tr>
+ </div>
+
+ <div class="field">
    <th>住所</th>
    <th><%= @customer.address %></th>
- </tr>
- <tr>
+ </div>
+
+ <div class="field">
    <th>電話番号</th>
    <th><%= @customer.telephone_number %></th>
- </tr>
- <tr>
+ </div>
+
+ <div class="field">
    <th>メールアドレス</th>
    <th><%= @customer.email %></th>
- </tr>
+ </div>
 
- <tr>
+ <div class="field">
    <td>配送先</td>
    <td>
     <div class='row'>
-     <% if current_user == @customer %>
      <%= link_to mailing_addresses_path(@customer), class: "btn btn-outline-primary btn-block" do %>
      <i>一覧を見る</i>
      <% end %>
-     <% end %>
     </div>
    </td>
- </tr>
- <tr>
+
+
    <td>注文履歴</td>
    <td>
     <div class='row'>
-     <% if current_user == @customer %>
      <%= link_to customer_orders_path(@customer), class: "btn btn-outline-primary btn-block" do %>
      <i>一覧を見る</i>
      <% end %>
-     <% end %>
     </div>
    </td>
- </tr>
+ </div>

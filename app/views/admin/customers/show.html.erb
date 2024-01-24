@@ -1,4 +1,4 @@
-<%= @customer.each do |customer| %>
+<%= form_with model: @customer, local: true do |customer| %>
 <h2><%= customer.first_name %><%= customer.last_name %>さんの会員詳細 </h2>
 
  <tr>

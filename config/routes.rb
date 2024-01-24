@@ -11,18 +11,21 @@ Rails.application.routes.draw do
     post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
     delete 'admins/sign_out' => 'admins/sessions#destroy', as: 'destroy_admin_session'
   end
+
+
+  devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+  }
+
   devise_for :customers, skip: :all
   devise_scope :customer do
-    get 'customers/sign_in' => 'public/sessions#new', as: 'new_customer_session'
-    post 'customers/sign_in' => 'public/sessions#create', as: 'customer_session'
-    delete 'customers/sign_out' => 'public/sessions#destroy', as: 'destroy_customer_session'
-    get 'customers/sign_up' => 'public/registrations#new', as: 'new_customer_registration'
-    post 'customers' => 'customers/registrations#create', as: 'customer_registration'
     get 'customers/:id/password/new' => 'customers/passwords#new', as: 'new_customer_password'
     get 'customers/:id/password/edit' => 'customers/passwords#edit', as: 'edit_customer_password'
     post 'customers/:id/password/edit' => 'customers/passwords#update'
     get 'customers/password/new' => 'customers/passwords#new'
   end
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -71,6 +74,5 @@ Rails.application.routes.draw do
       end
 
       resources :'mailing_addresses', only:[:index, :create, :edit, :update, :destroy]
-  end
-
-end
+    end
+   end

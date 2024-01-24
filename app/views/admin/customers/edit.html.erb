@@ -48,6 +48,12 @@
      </th>
   </div>
   
+  <tr>
+   <th>会員ステータス</th>
+   <th><%= form.radio_button :is_active, "true" %>有効</th>
+   <th><%= form.radio_button :is_active, "false" %>退会</th>
+  </tr>
+  
 <% end %>
 
   <div class="actions">

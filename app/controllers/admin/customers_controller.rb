@@ -1,7 +1,7 @@
  class Admin::CustomersController < ApplicationController
-    
+  validates :is_active, inclusion: {in: [true, false]}  
   def index
-   @customers = Public::Customer.all
+   @customers = Public::Customer.all.page(params[:page]).per(3)
   end 
     
   def show
