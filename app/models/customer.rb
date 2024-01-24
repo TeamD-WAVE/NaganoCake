@@ -9,4 +9,8 @@ class Customer < ApplicationRecord
   def addresses
     postcode + address + name
   end
+
+ # def active_for_authentication?
+  #  super && (is_active == true)
+  #end
 end
