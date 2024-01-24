@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <!--ジャンル選択のサイドバー-->
+      <%= render 'public/searches/genre' %>
+    </div>
+    <div class="col-3">
+      <%= image_tag @item.image, size: "200x200" %>
+    </div>
+    <h2><%= @item.name %></h2>
+    <h4><%= @item.introduction %></h4>
+    <div>¥<%= @item.add_tax_price.to_s(:dalimited) %>(税込)</div>
+    <div>
+      <%= form_with model: @item, url: cart_items_path, method: :post do |f| %>
+        <%= f.hidden_field :item_id, :value => @item %>
+        <%#= f.hidden_field :customer_id, :value => current_customer.id %>
+        <%= f.select :amount, *[1..10] %>
+        <%= f.submit 'カートに入れる' ,class: 'btn btn-success btn-sm'%>
+      <% end %>
+    </div>
+  </div>
+</div>
