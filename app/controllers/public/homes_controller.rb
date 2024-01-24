@@ -7,6 +7,7 @@ class Public::HomesController < ApplicationController
   end
 
   def about
+    # アクションの中身
   end
 
 

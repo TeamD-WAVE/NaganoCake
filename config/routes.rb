@@ -35,8 +35,8 @@ Rails.application.routes.draw do
     resources :order_items, only: [:update]
 	end
 
-  # get  'items' => 'customer/items#index', as: "customer_items"
-  # get  'items/:id' => 'customer/items#show', as: "customer_item"
+   get  'items' => 'customer/items#index', as: "customer_items"
+   get  'items/:id' => 'customer/items#show', as: "customer_item"
   # get 'cart_items' => 'customer/cart_items#index', as: "cart_items"
   # post 'cart_items' => 'customer/cart_items#create'
   # patch 'cart_items/:id' => 'customer/cart_items#update',as: "cart_item"
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   get "admin/orders/:id" => "admin/orders#show", as: "admin_order"
   patch "admin/orders/:id" => "admin/orders#update"
   # get '/search' => 'search#search'
-  
+
 
   get "orders/new" => "customer/orders#new"
   get "orders/confirm" => "customer/orders#confirm"
@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   get "thanks" => "customer/orders#thanks"
   get "orders" => "customer/orders#index", as: "customer_orders"
   get "orders/:id" => "customer/orders#show", as: "customer_order"
-  get "about" => "customer/home#about"
+  get 'about' => 'public/homes#about'
   patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
 
   scope module: 'public' do
