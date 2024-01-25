@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
  validates :address, presence: true
+  has_many :cart_items
 
   def addresses
     postcode + address + name

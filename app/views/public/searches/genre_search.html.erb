@@ -14,8 +14,8 @@
       <div class="search-item mr-2">
         <%= link_to item_path(item.id) do %>
           <%= image_tag item.image, size: "200x150" %>
+          <p><%= item.name %></p>
         <% end %>
-        <p><%= item.name %></p>
         <p>¥<%= item.price %></p>
       </div>
       <% end %>
