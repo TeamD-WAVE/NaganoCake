@@ -51,9 +51,23 @@ Rails.application.routes.draw do
   # get '/search' => 'search#search'
 
 
+
+#  get "orders/new" => "public/orders#new"
+#  get "orders/confirm" => "public/orders#confirm"
+#  post "orders/confirm" => "public/orders#create"
+#  get "thanks" => "public/orders#thanks"
+#  get "orders", to: "/public/orders#index", as: "customer_orders"
+#  get "orders/:id", to: "public/orders#show", as: "customer_order"
+   get 'about', to: 'public/homes#about'
+#  patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
+=======
   patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
 
+
   scope module: 'public' do
+    post "orders/confirm" => "orders#confirm"
+    get "orders/thanks" => "orders#thanks"
+    resources :orders, only: [:new, :create, :index, :show]
        root 'homes#top'
        resources :items, only:[:index, :show]
         resources :cart_items, only:[:create, :index, :update, :destroy] do
@@ -82,8 +96,10 @@ Rails.application.routes.draw do
     end
    end
 
-  scope module: :public do
-    post 'orders/confirm' => "orders#confirm"
-    get "orders/thanks" => "orders#thanks"
-    resources :orders, only: [:new, :create, :index, :show]
-  end
+  #scope module: :public do
+    #post "orders/confirm" => "orders#confirm"
+    #get "orders/thanks" => "orders#thanks"
+    #resources :orders, only: [:new, :create, :index, :show]post "orders/confirm" => "orders#confirm"
+    #get "orders/thanks" => "orders#thanks"
+    #resources :orders, only: [:new, :create, :index, :show]resources :orders, only: [:new, :create, :index, :show]
+  #end
