@@ -33,7 +33,7 @@
 
  <div class="field">
    <th>電話番号</th>
-   <th><%= @customer.phone_number %></th>
+   <th><%= @customer.telephone_number %></th>
  </div>
 
  <div class="field">
@@ -41,26 +41,26 @@
    <th><%= @customer.email %></th>
  </div>
 
- <div class="field">
+<%# <div class="field">
    <td>配送先</td>
    <td>
     <div class='row'>
-     <%= link_to mailing_addresses_path(@customer), class: "btn btn-outline-primary btn-block" do %>
-     <i>一覧を見る</i>
+     <%= link_to addresses_path(@customer), class: "btn btn-outline-primary btn-block" do %>
+ <%#    <i>一覧を見る</i>
      <% end %>
-    </div>
-   </td>
+  <%#  </div>
+   </td>   %>
 
 
-   <td>注文履歴</td>
+ <%#  <td>注文履歴</td>
    <td>
     <div class='row'>
-     <%= link_to customer_orders_path(@customer), class: "btn btn-outline-primary btn-block" do %>
-     <i>一覧を見る</i>
+     <%= link_to customer_orders_path, class: "btn btn-outline-primary btn-block" do %>
+ <%#    <i>一覧を見る</i>
      <% end %>
-    </div>
+ <%#   </div>
    </td>
  </div>
 
-  <%= link_to 'sign_out', destroy_customer_session_path, method: :delete %>
+  <%#= link_to 'sign_out', destroy_customer_session_path, method: :delete %>
 
