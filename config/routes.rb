@@ -50,14 +50,14 @@ Rails.application.routes.draw do
   # get '/search' => 'search#search'
 
 
-  get "orders/new" => "customer/orders#new"
-  get "orders/confirm" => "customer/orders#confirm"
-  post "orders/confirm" => "customer/orders#create"
-  get "thanks" => "customer/orders#thanks"
-  get "orders" => "customer/orders#index", as: "customer_orders"
-  get "orders/:id" => "customer/orders#show", as: "customer_order"
-  get 'about' => 'public/homes#about'
-  patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
+#  get "orders/new" => "public/orders#new"
+#  get "orders/confirm" => "public/orders#confirm"
+#  post "orders/confirm" => "public/orders#create"
+#  get "thanks" => "public/orders#thanks"
+#  get "orders", to: "/public/orders#index", as: "customer_orders"
+#  get "orders/:id", to: "public/orders#show", as: "customer_order"
+   get 'about', to: 'public/homes#about'
+#  patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
 
   scope module: 'public' do
        root 'homes#top'
