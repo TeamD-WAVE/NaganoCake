@@ -11,8 +11,11 @@ class Public::CartItemsController < ApplicationController
       redirect_to cart_items_path
     else
       #カート内に違う商品を追加する場合
-      @cart_item.save
-      redirect_to cart_items_path
+      if @cart_item.save
+        redirect_to cart_items_path
+      else
+        redirect_to request.referer
+      end
     end
   end
   
@@ -35,11 +38,11 @@ class Public::CartItemsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
   
-   def destroy
+  def destroy
     cart_item = current_customer.cart_items.find(params[:id])
     cart_item.destroy
     redirect_to cart_items_path
-   end
+  end
 
 
   private
