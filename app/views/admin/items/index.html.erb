@@ -33,9 +33,9 @@
             <!--<td><%#= item.is_active %></td>-->
             <td>
               <% if item.is_active %>
-                販売中
+                <strong class="text-success">販売中</strong>
               <% elsif %>
-                販売停止中
+                <strong class="text-secondary">販売停止中</strong>
               <% end %>
             </td>
           </tr>

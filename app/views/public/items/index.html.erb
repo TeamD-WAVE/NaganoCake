@@ -4,23 +4,25 @@
       <!--ジャンル選択のサイドバー-->
       <%= render 'public/searches/genre' %>
     </div>
-    <div class="col-9 d-flex">
-      <h2>商品一覧(全<%= @items.count %>件)</h2>
-      <table>
-        <tbody>
-          <tr>
-          <td>
-            <% @items.each do |item| %>
-                <%= link_to item_path(item.id) do %>
-                  <%= image_tag item.image, size: "200x200" %>
-                  <%= item.name %>
-                <% end %>
-                  ¥<%= item.price %>
-            <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-9">
+      <div class="row">
+        <h4><strong>商品一覧(全<%= @items.count %>件)</strong></h4>
+      </div>
+      <div class="row">
+        <% @items.each do |item| %>
+        <div class="col-3">
+          <%= link_to item_path(item.id) do %><br>
+            <%= image_tag item.image, size: "100x100" %><br>
+            <%= item.name %><br>
+          <% end %>
+          <% if item.is_active %>
+            ¥<%= item.price %>
+          <% elsif %>
+            販売停止中
+          <% end %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
