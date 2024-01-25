@@ -5,7 +5,12 @@
       <%= render 'public/searches/genre' %>
     </div>
     <div class="col-3">
-      <%= image_tag @item.image, size: "200x200" %>
+      <%#= image_tag @item.image, size: "200x200" %>
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "100x100" %><br>
+      <% else %>
+        <%= image_tag 'no_image', size: "100x100" %><br>
+      <% end %>
     </div>
     <div class="col-5 offset-1">
       <h3><strong><%= @item.name %></strong></h3><br>
