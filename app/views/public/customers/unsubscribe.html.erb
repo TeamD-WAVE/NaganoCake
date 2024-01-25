@@ -1,19 +1,44 @@
-<h2>本当に退会しますか？</h2>
+<div class='container px-5 px-sm-0'>
 
-<tr>
-  <th>退会すると、会員登録情報や</th> </br>
-  <th>これまでの購入履歴が閲覧できなくなります。</th> </br>
-  <th>退会する場合は、「退会する」をクリックしてください。</th>
-</tr>
+ <div class='row'>
+  <div class='col-md-12'>
+   <h2 class='text-center'>本当に退会しますか？</h2>
+  </div>
+ </div>
 
-<div class="field">
- <% if current_customer == @customer %>
-  <th><%= link_to customer_my_page_path, class: "btn btn-outline-primary btn-block" do %>
-   <i>退会しない</i>
-  <% end %></th>
+ <div class="mb-4"></div>
 
-  <th><%= link_to withdraw_customer_path, method: :patch, class: "btn btn-outline-danger btn-block" do %>
-   <i>退会する</i>
-  <% end %></th>
- <% end %>
-</div>
+  <div class='row'>
+   <div class='col-md-12'>
+    <div class="d-flex justify-content-center">
+      <div class="text-center">
+        <h3>退会すると、会員登録情報や</h3>
+        <h3>これまでの購入履歴が閲覧できなくなります。</h3>
+        <h3>退会する場合は、「退会する」をクリックしてください。</h3>
+      </div>
+    </div>
+ 　 </div>
+  </div>
+
+ <div class="mb-4"></div>
+
+  <div class='row'>
+   <div class='col-md-12'>
+     <div class="d-flex justify-content-center align-items-center">
+      <% if current_customer == @customer %>
+
+         <div class='col-6 text-right'>
+         <%= link_to customer_my_page_path, class: "btn btn-primary btn-lg" do %>
+          <i>退会しない</i>
+         <% end %>
+        </div>
+
+　　　　<div class='col-6'>
+         <%= link_to withdraw_customer_path, method: :patch, class: "btn btn-danger btn-lg" do %>
+          <i>退会する</i>
+         <% end %>
+　　　　</div>
+      <% end %>
+    </div>
+    </div>
+  </div>
