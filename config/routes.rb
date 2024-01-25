@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     resources :customers, only:[:index, :show, :edit, :update]
     resources :genres, only:[:index, :create, :edit, :update]
     resources :order_items, only: [:update]
+    resources :order_details, only: [:update]
+    resources :orders, only: [:show, :update]
 	end
 
   # get  'items' => 'customer/items#index', as: "customer_items"
@@ -44,10 +46,10 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  get "admin/orders" => "admin/orders#index", as: "admin_orders"
-  get "admin/orders/:id" => "admin/orders#show", as: "admin_order"
-  patch "admin/orders/:id" => "admin/orders#update"
+  #get "admin/orders/:id" => "admin/orders#show", as: "admin_order"
+  #patch "admin/orders/:id" => "admin/orders#update"
   # get '/search' => 'search#search'
+
 
 
 #  get "orders/new" => "public/orders#new"
@@ -58,8 +60,14 @@ Rails.application.routes.draw do
 #  get "orders/:id", to: "public/orders#show", as: "customer_order"
    get 'about', to: 'public/homes#about'
 #  patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
+=======
+  patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
+
 
   scope module: 'public' do
+    post "orders/confirm" => "orders#confirm"
+    get "orders/thanks" => "orders#thanks"
+    resources :orders, only: [:new, :create, :index, :show]
        root 'homes#top'
        resources :items, only:[:index, :show]
         resources :cart_items, only:[:create, :index, :update, :destroy] do
@@ -87,3 +95,11 @@ Rails.application.routes.draw do
       resources :'mailing_addresses', only:[:index, :create, :edit, :update, :destroy]
     end
    end
+
+  #scope module: :public do
+    #post "orders/confirm" => "orders#confirm"
+    #get "orders/thanks" => "orders#thanks"
+    #resources :orders, only: [:new, :create, :index, :show]post "orders/confirm" => "orders#confirm"
+    #get "orders/thanks" => "orders#thanks"
+    #resources :orders, only: [:new, :create, :index, :show]resources :orders, only: [:new, :create, :index, :show]
+  #end
