@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-8 offset-md-1 mt-5 pt-5">
+      <h3 class="border border-dark p-4">
+        ようこそ、ながのCakeへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。
+      </h3>
+      <h2 class="pt-4 mt-3 mb-4">新着商品</h2>
+      <div class="row" >
+        <div class="col-md-3 d-flex flex-row">
+          <% @items.first(4).each do |item| %>
+            <div class="px-2">
+              <%= link_to item_path(item.id) do %>
+                <%=image_tag item.get_image(200,100) %>
+              <% end %>
+              <p class="mx-2"><%= item.name %></p>
+              <% if item.is_active == true %>
+                <p class="mx-2">¥ <%= item.price.to_s(:delimited) %></p>
+              <% else %>
+                <p class="mx-2">販売停止中</p>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
