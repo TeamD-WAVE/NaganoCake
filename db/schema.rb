@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2024_01_25_072952) do
 
+ActiveRecord::Schema.define(version: 2024_01_23_103520) do
+
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
