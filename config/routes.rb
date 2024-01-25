@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     resources :customers, only:[:index, :show, :edit, :update]
     resources :genres, only:[:index, :create, :edit, :update]
     resources :order_items, only: [:update]
+    resources :order_details, only [:update]
+    resources :orders, only: [:show, :update]
 	end
 
   # get  'items' => 'customer/items#index', as: "customer_items"
@@ -44,19 +46,11 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  get "admin/orders" => "admin/orders#index", as: "admin_orders"
-  get "admin/orders/:id" => "admin/orders#show", as: "admin_order"
-  patch "admin/orders/:id" => "admin/orders#update"
+  #get "admin/orders/:id" => "admin/orders#show", as: "admin_order"
+  #patch "admin/orders/:id" => "admin/orders#update"
   # get '/search' => 'search#search'
 
 
-  get "orders/new" => "customer/orders#new"
-  get "orders/confirm" => "customer/orders#confirm"
-  post "orders/confirm" => "customer/orders#create"
-  get "thanks" => "customer/orders#thanks"
-  get "orders" => "customer/orders#index", as: "customer_orders"
-  get "orders/:id" => "customer/orders#show", as: "customer_order"
-  get 'about' => 'public/homes#about'
   patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
 
   scope module: 'public' do
@@ -87,3 +81,10 @@ Rails.application.routes.draw do
       resources :'mailing_addresses', only:[:index, :create, :edit, :update, :destroy]
     end
    end
+
+  scope module: :public do
+    post 'orders/confirm' => "orders#confirm"
+    get "orders/thanks" => "orders#thanks"
+    resources :orders, only: [:new, :create, :index, :show]
+  end
+  
