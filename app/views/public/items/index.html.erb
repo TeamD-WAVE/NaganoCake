@@ -18,11 +18,16 @@
           <% if item.is_active %>
             ¥<%= item.price %>
           <% elsif %>
-            販売停止中
+            <strong class="text-danger">販売停止中</strong>
           <% end %>
         </div>
         <% end %>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 offset-6 mt-5">
+      <%= paginate @items %>
     </div>
   </div>
 </div>
