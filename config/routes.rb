@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
 
-  namespace :public do
-    get 'genres/:id/search' => 'searches#genre_search'
-  end
+  
   devise_for :admins, skip: :all
   devise_scope :admin do
     get 'admin/sign_in' => 'admin/sessions#new', as: 'new_admin_session'
@@ -66,6 +64,7 @@ Rails.application.routes.draw do
   scope module: 'public' do
     post "orders/confirm" => "orders#confirm"
     get "orders/thanks" => "orders#thanks"
+     get 'genres/:id/search' => 'searches#genre_search'
     resources :orders, only: [:new, :create, :index, :show]
        root 'homes#top'
        resources :items, only:[:index, :show]
