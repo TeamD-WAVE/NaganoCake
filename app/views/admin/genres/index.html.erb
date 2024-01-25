@@ -1,8 +1,12 @@
 <div class="container">
-  <h1>ジャンル一覧・追加</h1>
+  <div class="row">
+    <div class="col-3 offset-1">
+      <h4 class="table-active text-center">ジャンル一覧・追加</h4>
+    </div>
+  </div>
   <div class="row">
     <%= form_with model: @genre, url:admin_genres_path, method: :post do |f| %>
-      <h4>ジャンル名  <%= f.text_field :name %></h4>
+      ジャンル名  <%= f.text_field :name %>
       <%= f.submit "新規登録", class: "btn btn-sm btn-primary btn-success" %>
     <% end %>
   </div>
@@ -10,8 +14,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th>ジャンル</th>
-          <th></th>
+          <th class="table-active">ジャンル</th>
+          <th class="table-active"></th>
         </tr>
       </thead>
       <tbody>
