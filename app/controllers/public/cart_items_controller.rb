@@ -17,14 +17,14 @@ class Public::CartItemsController < ApplicationController
   end
   
   def index
-    @cart_item = CartItem.all
-    # @cart_item = current_customer.cart_items.all
+    # @cart_item = CartItem.all
+    @cart_item = current_customer.cart_items.all
     # byebug
   end
   
   def update
-    # cart_item = current_customer.cart_items.find(params[:id])
-    cart_item = CartItem.find(params[:id])
+    cart_item = current_customer.cart_items.find(params[:id])
+    # cart_item = CartItem.find(params[:id])
     cart_item.update(cart_item_params)
     redirect_back(fallback_location: root_path)
   end
