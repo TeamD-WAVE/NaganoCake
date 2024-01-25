@@ -17,13 +17,13 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
 
-  devise_for :customers, skip: :all
-  devise_scope :customer do
-    get 'customers/:id/password/new' => 'customers/passwords#new', as: 'new_customer_password'
-    get 'customers/:id/password/edit' => 'customers/passwords#edit', as: 'edit_customer_password'
-    post 'customers/:id/password/edit' => 'customers/passwords#update'
-    get 'customers/password/new' => 'customers/passwords#new'
-  end
+  #devise_for :customers, skip: :all
+  #devise_scope :customer do
+   # get 'customers/:id/password/new' => 'customers/passwords#new', as: 'new_customer_password'
+    #get 'customers/:id/password/edit' => 'customers/passwords#edit', as: 'edit_customer_password'
+    #post 'customers/:id/password/edit' => 'customers/passwords#update'
+    #get 'customers/password/new' => 'customers/passwords#new'
+  #end
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -69,16 +69,20 @@ Rails.application.routes.draw do
   end
       get 'genres/:id/search' => 'searches#genre_search'
       get '/customers/my_page', to: '/public/customers#show', as: 'customer_my_page'
-      get '/customers/information/edit', to: 'public/customers#edit', as: 'edit_customer'
-      patch 'customers/information', to: 'public/customers#update', as: 'information'
-      get 'customers/quit', to: 'customers#quit', as: 'quit'
+      get '/customers/information/edit', to: '/public/customers#edit', as: 'edit_customer', format: false
+      patch '/customers/information', to: '/public/customers#update', as: 'information'
+      get '/customers/quit', to: 'customers#quit', as: 'quit'
+      get '/customers/unsubscribe', to: '/public/customers#unsubscribe', as: 'unsubscribe_customer'
+      patch '/customers/withdraw', to: '/public/customers#withdraw', as: 'withdraw_customer'
 
-      resources :customers do
-      member do
-        patch :withdraw
-        get :unsubscribe
-      end
-      end
+
+
+     # resources :customers do
+      #member do
+      #  patch :withdraw
+      #  get :unsubscribe
+      #end
+      #end
 
       resources :'mailing_addresses', only:[:index, :create, :edit, :update, :destroy]
     end

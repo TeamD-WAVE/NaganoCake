@@ -1,30 +1,32 @@
 class Public::CustomersController < ApplicationController
- before_action :authenticate_customer!, except: [:top]
- 
+ #before_action :authenticate_customer!, except: [:top]
+
   def show
    @customer = current_customer
   end
 
   def edit
-   @customer = Customer.find(params[:id])
+   @customer = current_customer
+  rescue ActiveRecord::RecordNotFound
+     redirect_to root_path, notice: "お客様が見つかりませんでした"
   end
 
   def update
-   @customer = Customer.find(params[:id])
+   @customer = current_customer
    @customer.update(customer_params)
    redirect_to '/customers/my_page'
   end
 
   def unsubscribe
-  @customer = Customer.find(params[:id])
+  @customer = current_customer
   end
 
   def withdraw
-  @customer = Customer.find(params[:id])
+  @customer = current_customer
   @customer.update(is_active: false)
   reset_session
   flash[:notice] = "退会処理を実行いたしました"
-  redirect_to '/customers/my_page'
+  redirect_to root_path
   end
 
 

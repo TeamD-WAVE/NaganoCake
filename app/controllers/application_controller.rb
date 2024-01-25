@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     # when Member
     # root_path
      when Customer
-      root_path
+      customer_my_page_path
     else
       root_path
     end
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
       if resource == :admin
       new_admin_session_path
       else
-      new_member_session_path
+      new_customer_session_path
       end
     end
 

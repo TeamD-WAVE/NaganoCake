@@ -1,6 +1,6 @@
 <h2>会員情報編集</h2>
-<%= form_with(model: @customer, url: customer_path) do |form| %>
-  <%= render "public/shared/error_messages", resource: @resource %>
+<%= form_with model: @customer, url: information_path do |form| %>
+  <%= render "public/shared/error_messages", resource: @customer %>
 
   <div class="field">
     <%= form.label :first_name, "氏名" %>
@@ -9,9 +9,9 @@
   </div>
 
   <div class="field">
-    <%= form.label :kana_first_name, "フリガナ" %>
-    <%= form.text_field :kana_first_name %>
-    <%= form.text_field :kana_last_name %>
+    <%= form.label :first_name_kana, "フリガナ" %>
+    <%= form.text_field :first_name_kana %>
+    <%= form.text_field :last_name_kana %>
   </div>
 
   <div class="field">
@@ -25,8 +25,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :phone_number, "電話番号" %>
-    <%= form.text_field :phone_number %>
+    <%= form.label :telephone_number, "電話番号" %>
+    <%= form.text_field :telephone_number %>
   </div>
 
   <div class="field">
@@ -37,6 +37,11 @@
   <div class="actions">
     <%= form.submit "編集内容を保存" %>
   </div>
+
+   <%= link_to unsubscribe_customer_path, class: "btn btn-outline-danger btn-block" do %>
+   <i>退会する</i>
+  <% end %>
+
 <% end %>
 
 
