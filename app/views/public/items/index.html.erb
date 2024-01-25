@@ -4,7 +4,7 @@
       <!--ジャンル選択のサイドバー-->
       <%= render 'public/searches/genre' %>
     </div>
-    <div class="col-9">
+    <div class="col-9 d-flex">
       <h2>商品一覧(全<%= @items.count %>件)</h2>
       <table>
         <tbody>
@@ -13,9 +13,9 @@
             <% @items.each do |item| %>
                 <%= link_to item_path(item.id) do %>
                   <%= image_tag item.image, size: "200x200" %>
-                  <%= item.name %><br>
-                  ¥<%= item.price %>
+                  <%= item.name %>
                 <% end %>
+                  ¥<%= item.price %>
             <% end %>
             </td>
           </tr>
