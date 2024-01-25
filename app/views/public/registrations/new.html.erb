@@ -1,8 +1,8 @@
 
 
 <h2>新規会員登録</h2>
- <%= form_with model: @customer, url: customer_registration_path do |form| %>
-  <%# <%= render "public/shared/error_messages", resource: @resource %>
+<%= form_with(model: @customer, url: new_customer_registration_path) do |form| %>
+  <%= render "public/shared/error_messages", resource: @resource %>
 
   <div class="field">
     <%= form.label :first_name, "名前（姓）" %>
@@ -13,11 +13,11 @@
   </div>
 
   <div class="field">
-    <%= form.label :first_name_kana, "フリガナ（セイ）" %>
-    <%= form.text_field :first_name_kana %>
+    <%= form.label :kana_first_name, "フリガナ（セイ）" %>
+    <%= form.text_field :kana_first_name %>
 
-    <%= form.label :last_name_kana, "（メイ）" %>
-    <%= form.text_field :last_name_kana %>
+    <%= form.label :kana_last_name, "（メイ）" %>
+    <%= form.text_field :kana_last_name %>
   </div>
 
   <div class="field">
@@ -41,8 +41,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :password, "パスワード(6文字以上)" %>
-    <%= form.password_field :password, autocomplete: "new-password" %>
+    <%= form.label :encrypted_password, "パスワード(6文字以上)" %>
+    <%= form.password_field :encrypted_password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
@@ -57,4 +57,4 @@
 
 
 <h4>既に登録済みの方</h4>
-<h5><%= render "public/shared/links" %> からログインを行ってください。</h5>
+<h5><%= render "public/shared/links" %> から新規登録を行ってください。</h5>
