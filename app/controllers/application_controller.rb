@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
       case resource
       when Admin
       admin_admins_path
-      when Member
-      root_path
+      # when Member
+      # root_path
        when Customer
       root_path
       else
@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
     case resource
     when Admin
     admin_admins_path
-    when Member
-    root_path
+    # when Member
+    # root_path
      when Customer
       root_path
     else
