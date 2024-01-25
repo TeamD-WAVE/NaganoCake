@@ -13,12 +13,12 @@
 
  <div class="field">
   <th>氏名</th>
-  <th><%= @customer.last_name %>　<%= @customer.first_name %></th>
+  <th>　<%= @customer.first_name %> <%= @customer.last_name %></th>
  </div>
 
  <div class="field">
   <th>カナ</th>
-  <th><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></th>
+  <th>　<%= @customer.first_name_kana %> <%= @customer.last_name_kana %></th>
  </div>
 
  <div class="field">
@@ -61,3 +61,6 @@
     </div>
    </td>
  </div>
+
+  <%= link_to 'sign_out', destroy_customer_session_path, method: :delete %>
+
