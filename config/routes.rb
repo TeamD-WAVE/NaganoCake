@@ -33,7 +33,6 @@ Rails.application.routes.draw do
   	resources :items, only:[:new, :create, :index, :show, :edit, :update]
     resources :customers, only:[:index, :show, :edit, :update]
     resources :genres, only:[:index, :create, :edit, :update]
-    resources :order_items, only: [:update]
     resources :order_details, only: [:update]
     resources :orders, only: [:show, :update]
 	end
@@ -58,9 +57,9 @@ Rails.application.routes.draw do
 #  get "thanks" => "public/orders#thanks"
 #  get "orders", to: "/public/orders#index", as: "customer_orders"
 #  get "orders/:id", to: "public/orders#show", as: "customer_order"
-   get 'about', to: 'public/homes#about'
+   get 'about', to: 'public/homes#about', as: "about"
 #  patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
-=======
+
   patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
 
 
