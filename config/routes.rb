@@ -54,6 +54,9 @@ Rails.application.routes.draw do
   patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
 
   scope module: 'public' do
+    post "orders/confirm" => "orders#confirm"
+    get "orders/thanks" => "orders#thanks"
+    resources :orders, only: [:new, :create, :index, :show]
        root 'homes#top'
        resources :items, only:[:index, :show]
         resources :cart_items, only:[:create, :index, :update, :destroy] do
@@ -82,8 +85,10 @@ Rails.application.routes.draw do
     end
    end
 
-  scope module: :public do
-    post 'orders/confirm' => "orders#confirm"
-    get "orders/thanks" => "orders#thanks"
-    resources :orders, only: [:new, :create, :index, :show]
-  end
+  #scope module: :public do
+    #post "orders/confirm" => "orders#confirm"
+    #get "orders/thanks" => "orders#thanks"
+    #resources :orders, only: [:new, :create, :index, :show]post "orders/confirm" => "orders#confirm"
+    #get "orders/thanks" => "orders#thanks"
+    #resources :orders, only: [:new, :create, :index, :show]resources :orders, only: [:new, :create, :index, :show]
+  #end
