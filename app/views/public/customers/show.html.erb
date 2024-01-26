@@ -1,45 +1,77 @@
-<h2>マイページ</h2>
+<div class='container'>
 
- <tr>
-   <td>登録情報</td>
-   <td>
-    <div class='row'>
-     <%= link_to edit_customer_path(@customer), class: "btn btn-outline-success btn-block" do %>
-     <i>編集する</i>
-     <% end %>
+  <div class='row'>
+     <div class='col-md-1'></div>
+   <div class='col-3 text-center'>
+    <h3 class="table-active">マイページ</h3>
+   </div>
+   <div class='col-md-9'></div>
+
+  </div>
+
+  <div class="mb-4"></div>
+
+   <div class='row'>
+
+    <div class='col-md-2'><h3>登録情報</h3></div>
+     <div class='col-md-3'>
+       <%= link_to edit_customer_path(@customer), class: "btn btn-success btn-lg" do %>
+       <i>編集する</i>
+       <% end %>
+     </div>
+     <div class='col-md-7'></div>
+   </div>
+
+  <div class="mb-4"></div>
+
+  <table class="table table-bordered border-dark">
+
+   <div class='row'>
+
+    <div class='col-md-3'>
+      <th class="table-active">氏名</th>
     </div>
-   </td>
- </tr>
+    <th class='col-md-7'><%= @customer.first_name %> <%= @customer.last_name %></th>
+    <div class='col-md-2'></div>
+  </div>
 
- <div class="field">
-  <th>氏名</th>
-  <th>　<%= @customer.first_name %> <%= @customer.last_name %></th>
- </div>
+  <div class='row'>
+   <tr class="text-left">
+    <th class="col-md-3 table-active">カナ</th></div>
+    <th class='col-md-7'><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></th>
+   </tr>
+   <div class='col-md-2'></div>
+   </div>
 
- <div class="field">
-  <th>カナ</th>
-  <th>　<%= @customer.first_name_kana %> <%= @customer.last_name_kana %></th>
- </div>
+  <div class='row'>
+     <th class="col-md-3 table-active">郵便番号</th></div>
+     <th class='col-md-7'><%= @customer.postal_code %></th>
+     <div class='col-md-2'></div>
+   </div>
 
- <div class="field">
-   <th>郵便番号</th>
-   <th><%= @customer.postal_code %></th>
- </div>
+  <div class='row'>
+   <tr class="text-left">
+     <th class="col-md-3 table-active">住所</th></div>
+     <th class='col-md-7'><%= @customer.address %></th>
+   </tr>
+   <div class='col-md-2'></div>
+   </div>
 
- <div class="field">
-   <th>住所</th>
-   <th><%= @customer.address %></th>
- </div>
+  <div class='row'>
+   <tr class="text-left">
+     <th class="col-md-3 table-active">電話番号</th>
+     <th class='col-md-7'><%= @customer.telephone_number %></th>
+   </tr>
+   <div class='col-md-2'></div>
+  </div>
 
- <div class="field">
-   <th>電話番号</th>
-   <th><%= @customer.telephone_number %></th>
- </div>
+  <div class='row'>
+     <th class="col-md-3 table-active">メールアドレス</th>
+     <th class='col-md-7'><%= @customer.email %></th>
+    <div class='col-md-2'></div>
+  </div>
 
- <div class="field">
-   <th>メールアドレス</th>
-   <th><%= @customer.email %></th>
- </div>
+   </table>
 
 <%# <div class="field">
    <td>配送先</td>
@@ -60,7 +92,8 @@
      <% end %>
  <%#   </div>
    </td>
- </div>
+  </div>
+ %>
 
-  <%#= link_to 'sign_out', destroy_customer_session_path, method: :delete %>
 
+</div>

@@ -1,61 +1,67 @@
+<div class='container'>
+ <div class='row'>
+  <div class='col-md-12'>
+  <table class="table table-borderless">
 
-<%= form_with(model: @customer, url: customer_path) do |form| %>
-  <%= render "public/shared/error_messages", resource: @resource %>
-  
-  <h2><%= customer.first_name %><%= customer.last_name %>さんの会員情報編集</h2>
-  
-  <div class="field">
-   <th>会員ID</th>
-   <th><%= form.id %></th>
-  </div>
- 
-  <div class="field">
-    <%= form.label :first_name, "氏名" %>
-    <%= form.text_field :first_name %>
-    <%= form.text_field :last_name %>
-  </div>
+  <h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h2>
 
-  <div class="field">
-    <%= form.label :kana_first_name, "フリガナ" %>
-    <%= form.text_field :kana_first_name %>
-    <%= form.text_field :kana_last_name %>
-  </div>
+  <thead class="text-left">
+     <tr>
+      <th>会員ID</th>
+      <td><%= @customer.id %></td>
+     </tr>
+  </thead>
 
-  <div class="field">
-    <%= form.label :postal_code, "郵便番号" %>
-    <%= form.text_field :postal_code %>
-  </div>
+  <tbody class="text-left">
+  <%= form_with model: @customer, url: admin_customer_path do |customer| %>
+   <%= render "public/shared/error_messages", resource: @customer %>
+  <tr>
+    <th><%= customer.label :first_name, "氏名" %></th>
+    <td><%= customer.text_field :first_name %></td>
+    <td><%= customer.text_field :last_name %></td>
+  </tr>
+  <tr>
+    <th><%= customer.label :first_name_kana, "フリガナ" %></th>
+    <td><%= customer.text_field :first_name_kana %></td>
+    <td><%= customer.text_field :last_name_kana %></td>
+  </tr>
 
-  <div class="field">
-    <%= form.label :address, "住所" %>
-    <%= form.text_field :address %>
-  </div>
+  <tr>
+    <th><%= customer.label :postal_code, "郵便番号" %></th>
+    <td><%= customer.text_field :postal_code %></td>
+  </tr>
 
-  <div class="field">
-    <%= form.label :phone_number, "電話番号" %>
-    <%= form.text_field :phone_number %>
-  </div>
+  <tr>
+    <th><%= customer.label :address, "住所" %></th>
+    <td colspan="2"><%= customer.text_field :address, style: "width: 100%" %></td>
+  </tr>
 
-  <div class="field">
-    <%= form.label :email, "メールアドレス" %>
-    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  
-  <div class="field">
-   <th>ステータス</th>
-     <th class="<%= customer.is_active ? 'text-success' : '' %>">
-      <%= customer.is_active ? "有効" : "無効" %>
-     </th>
-  </div>
-  
+   <tr>
+   <th><%= customer.label :telephone_number, "電話番号" %></th>
+    <td><%= customer.text_field :telephone_number %></td>
+  </tr>
+
+  <tr>
+    <th><%= customer.label :email, "メールアドレス" %></th>
+    <td><%= customer.email_field :email, autofocus: true, autocomplete: "email" %></td>
+  </tr>
+
+
   <tr>
    <th>会員ステータス</th>
-   <th><%= form.radio_button :is_active, "true" %>有効</th>
-   <th><%= form.radio_button :is_active, "false" %>退会</th>
+   <td class="text-center"><%= customer.radio_button :is_active, "true" %>有効</td>
+   <td class="text-left"><%= customer.radio_button :is_active, "false" %>退会</td>
+   <td class='col-md-5'></td>
   </tr>
-  
-<% end %>
 
-  <div class="actions">
-    <%= form.submit "編集内容を保存", class: 'btn btn-success' %>
+  </tbody>
+</table>
+
+   <div class="actions">
+    <%= customer.submit "編集内容を保存", class: 'btn btn-success' %>
+   </div>
+
+<% end %>
   </div>
+ </div>
+</div>
