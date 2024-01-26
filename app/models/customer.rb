@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
   has_many :cart_items
 
   def addresses
-    postcode + address + name
+    postal_code + address + name
   end
 
  # def active_for_authentication?
