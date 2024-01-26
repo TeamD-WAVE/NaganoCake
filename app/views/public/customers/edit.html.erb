@@ -13,7 +13,7 @@
 
   <div class="mb-4"></div>
 
-     <%= form_with model: @customer, url: information_path do |form| %>
+     <%= form_with model: @customer, url: information_path, local: true do |form| %>
      <%= render "public/shared/error_messages", resource: @customer %>
 
       <div class='row'>

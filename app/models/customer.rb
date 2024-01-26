@@ -6,9 +6,10 @@ class Customer < ApplicationRecord
 
  validates :address, presence: true
   has_many :cart_items
+  has_many :orders
 
   def addresses
-    postcode + address + name
+    postal_code + address + first_name + last_name
   end
 
  # def active_for_authentication?

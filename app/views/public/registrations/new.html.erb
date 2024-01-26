@@ -11,7 +11,7 @@
 
   <div class="mb-5"></div>
 
-  <%= form_with model: @customer, url: customer_registration_path do |form| %>
+  <%= form_with model: @customer, url: customer_registration_path, local: true do |form| %>
   <%= render "public/shared/error_messages", resource: @customer %>
 
   <div class='row'>
