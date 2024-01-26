@@ -55,7 +55,7 @@ Rails.application.routes.draw do
 #  get "thanks" => "public/orders#thanks"
 #  get "orders", to: "/public/orders#index", as: "customer_orders"
 #  get "orders/:id", to: "public/orders#show", as: "customer_order"
-   get 'about', to: 'public/homes#about', as: "about"
+  get 'about', to: 'public/homes#about', as: "about"
 #  patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
 
   patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
@@ -66,14 +66,13 @@ Rails.application.routes.draw do
     get "orders/thanks" => "orders#thanks"
      get 'genres/:id/search' => 'searches#genre_search'
     resources :orders, only: [:new, :create, :index, :show]
-       root 'homes#top'
        resources :items, only:[:index, :show]
         resources :cart_items, only:[:create, :index, :update, :destroy] do
     collection do
       delete 'destroy_all'
     end
   end
-      get 'genres/:id/search' => 'searches#genre_search'
+      # get 'genres/:id/search' => 'searches#genre_search'
       get '/customers/my_page', to: '/public/customers#show', as: 'customer_my_page'
       get '/customers/information/edit', to: '/public/customers#edit', as: 'edit_customer', format: false
       patch '/customers/information', to: '/public/customers#update', as: 'information'
