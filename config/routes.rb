@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  
+
   devise_for :admins, skip: :all
   devise_scope :admin do
     get 'admin/sign_in' => 'admin/sessions#new', as: 'new_admin_session'
@@ -80,6 +80,11 @@ Rails.application.routes.draw do
       get '/customers/quit', to: 'customers#quit', as: 'quit'
       get '/customers/unsubscribe', to: '/public/customers#unsubscribe', as: 'unsubscribe_customer'
       patch '/customers/withdraw', to: '/public/customers#withdraw', as: 'withdraw_customer'
+
+      resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+      root to: "homes#top"
+      get "about" => "homes#about"
+
 
 
 
