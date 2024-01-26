@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  
+
   devise_for :admins, skip: :all
   devise_scope :admin do
     get 'admin/sign_in' => 'admin/sessions#new', as: 'new_admin_session'
