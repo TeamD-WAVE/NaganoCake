@@ -1,22 +1,26 @@
-<div class="container p-3">
+<div class="container">
   <div class="row">
     <%#= render 'public/shared/header.html.erb' %>
 
-  <div class="col-md-3 col-md-offset-1">
+  <div class="col-3">
     <%= render 'public/searches/genre' %>
   </div>
-
-  <div class="col-md-8">
-    <h3>検索結果</h3>
-
+  <div class="col-9">
+    <div class="row">
+    <h4><strong>検索結果(全<%= @items.count %>件)</strong></h4>
+    </div>
     <div class="search-items d-flex flex-wrap">
       <% @items.each do |item| %>
-      <div class="search-item mr-2">
-        <%= link_to item_path(item.id) do %>
-          <%= image_tag item.image, size: "200x150" %>
-          <p><%= item.name %></p>
+      <div class="col-3">
+        <%= link_to item_path(item.id) do %><br>
+          <%= image_tag item.image, size: "100x100" %><br>
+          <%= item.name %><br>
         <% end %>
-        <p>¥<%= item.price %></p>
+        <% if item.is_active %>
+          ¥<%= item.price %>
+        <% elsif %>
+          <strong class="text-danger">販売停止中</strong>
+        <% end %>
       </div>
       <% end %>
     </div>

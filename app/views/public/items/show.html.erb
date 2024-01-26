@@ -5,22 +5,29 @@
       <%= render 'public/searches/genre' %>
     </div>
     <div class="col-3">
-      <%= image_tag @item.image, size: "200x200" %>
+      <%#= image_tag @item.image, size: "200x200" %>
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "100x100" %><br>
+      <% else %>
+        <%= image_tag 'no_image', size: "100x100" %><br>
+      <% end %>
     </div>
-    <h2><%= @item.name %></h2>
-    <h4><%= @item.introduction %></h4>
-    <% if @item.is_active == true %>
-      <div>¥<%= @item.add_tax_price.to_s(:dalimited) %>(税込)</div>
-      <div>
-        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-          <%= f.hidden_field :item_id, :value => @item.id %>
-          <%#= f.hidden_field :customer_id, :value => current_customer.id %>
-          <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
-          <%= f.submit 'カートに入れる' ,class: 'btn btn-success btn-sm'%>
-        <% end %>
-      </div>
-    <% else %>
-      <p class="text-danger">販売停止中</p>
-    <% end %>
+    <div class="col-5 offset-1">
+      <h3><strong><%= @item.name %></strong></h3><br>
+      <h5><strong><%= @item.introduction %></strong></h5><br>
+      <% if @item.is_active == true %>
+        <div>¥<%= @item.add_tax_price.to_s(:dalimited) %>(税込)</div>
+        <div>
+          <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%#= f.hidden_field :customer_id, :value => current_customer.id %>
+            <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
+            <%= f.submit 'カートに入れる' ,class: 'btn btn-success btn-sm'%>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-danger">販売停止中</p>
+      <% end %>
+    </div>
   </div>
 </div>

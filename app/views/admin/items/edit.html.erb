@@ -1,7 +1,11 @@
 <div class="container">
-  <h1>商品編集</h1>
   <div class="row">
-    <div class="col-10 offset-1">
+    <div class="col-2 offset-1">
+      <h4 class="table-active text-center">商品編集</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2">
       <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
         <table class="table">
           <tr>
@@ -26,8 +30,10 @@
           </tr>
           <tr>
             <td>販売ステータス</td>
-            <td><%= f.radio_button :is_active, "true" %>販売中</td>
-            <td><%= f.radio_button :is_active, "false" %>販売停止中</td>
+            <td>
+              <%= f.radio_button :is_active, "true" %>販売中 
+              <%= f.radio_button :is_active, "false" %> 販売停止中
+            </td>
           </tr>
           <tr>
             <td></td>

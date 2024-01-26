@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
 
 
-  namespace :public do
-    get 'genres/:id/search' => 'searches#genre_search'
-  end
+  
   devise_for :admins, skip: :all
   devise_scope :admin do
-    get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
-    post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
-    delete 'admins/sign_out' => 'admins/sessions#destroy', as: 'destroy_admin_session'
+    get 'admin/sign_in' => 'admin/sessions#new', as: 'new_admin_session'
+    post 'admin/sign_in' => 'admin/sessions#create', as: 'admin_session'
+    delete 'admin/sign_out' => 'admin/sessions#destroy', as: 'destroy_admin_session'
   end
 
 
@@ -66,6 +64,7 @@ Rails.application.routes.draw do
   scope module: 'public' do
     post "orders/confirm" => "orders#confirm"
     get "orders/thanks" => "orders#thanks"
+     get 'genres/:id/search' => 'searches#genre_search'
     resources :orders, only: [:new, :create, :index, :show]
        root 'homes#top'
        resources :items, only:[:index, :show]
