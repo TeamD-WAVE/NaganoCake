@@ -3,4 +3,3 @@ class Admin::HomesController < ApplicationController
     @orders = Order.page(params[:page])
   end
 end
-3

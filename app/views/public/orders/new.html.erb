@@ -1,29 +1,57 @@
-<h4>注文情報入力</h4>
+<div class="container">
+  <div class="row">
+    <h1>注文情報入力</h1>
+  </div>
 
+  
   <%= form_with model: @order, url: '/orders/confirm', local: true do |f| %>
-    <h4>支払い方法</h4>
-    <%= f.radio_button :payment_method, "credit_card" %>
-    <%= f.label :payment_method_credit_card, "クレジットカード" %>
-    <%= f.radio_button :payment_method, "transfer" %>
-    <%= f.label :payment_method_transfer, "銀行振込" %>
+  <div class="row"> 
+      <h4 style="font-weight: bold;">支払方法</h4>
+  </div>    
+    <div class="row">
+      <%= f.radio_button :payment_method, "credit_card" %>
+      <%= f.label :payment_method_credit_card, "クレジットカード" %>
+    </div>
+    <div class="row">
+      <%= f.radio_button :payment_method, "transfer" %>
+      <%= f.label :payment_method_transfer, "銀行振込" %>
+    </div>
 
-    <h3>お届け先</h3>
-    <p><%= f.radio_button :select_address, 0 %>ご自身の住所</p>
-    <%= current_customer.address %>
+  <div class="row">
+    <h4 style="font-weight: bold;">お届け先</h4>
+  </div>
+  <div class="row">
+    <%= f.radio_button :select_address, 0 %>ご自身の住所
+  </div>
+  <div class="row">
+    <div class="col mt-1 mb-3">
+    <%= "#{current_customer.address} #{current_customer.postal_code}" %>
+    </div>
+  </div>
+  <div class="row">
     <p><%= f.radio_button :select_address, 1 %>登録済み住所から選択</p>
-    <p><%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display) %></p>
+  </div>
+  <div class="row">
+    <div class="col mt-1 mb-3">
+      <p><%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display) %></p>
+    </div>
+  </div>
+  <div class="row">
     <p><%= f.radio_button :select_address, 2 %>新しいお届け先</p>
-
+  </div>
+  
+  <div class="row">
+    <div class="col">
     <table>
     <tr>
-      <td>郵便番号</td>
+      <td>郵便番号（ハイフンなし）</td>
       <td><%= f.text_field :postal_code %></td>
-      <p>〒<%#= current_customer.postal_code%><%#=current_customer.name%></p>
+      <p><%#= current_customer.postal_code%><%#=current_customer.name%></p>
     </tr>
 
     <tr>
       <td>住所</td>
-      <td><%= f.text_field :address %></td>
+      <td><%= f.text_field :address, :size=>"60" %></td>
 
     </tr>
 
@@ -33,5 +61,12 @@
 
     </tr>
     </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 offset-5">
       <%= f.submit "確認画面へ進む", style: "background-color: #007bff; color: #fff; border: none; padding: 0.5em 1em; cursor: pointer;" %>
       <% end %>
+    </div>
+  </div>
+</div>
