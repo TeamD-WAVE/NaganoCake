@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :caritem_nill, only: [:new, :create]
+  before_action :cartitem_nill, only: [:new, :create]
   
   def confilm
     @order = Order.new(order_params)
@@ -16,7 +16,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address] == "2"
       @order.customer_id = current_customer.id
     end
-      @car_items = current_customer.car_items
+      @cart_items = current_customer.cart_items
       @order_new = Order.new
       render :confirm
   end
@@ -95,10 +95,10 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment, :customer_id , :status)
   end
 
-  def caritem_nill
-    car_items = current_customer.car_items
-    if car_items.blank?
-      redirect_to car_items_path
+  def cartitem_nill
+    cart_items = current_customer.cart_items
+    if cart_items.blank?
+      redirect_to cart_items_path
     end
   end
 end

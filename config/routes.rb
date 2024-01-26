@@ -66,7 +66,9 @@ Rails.application.routes.draw do
     get "orders/thanks" => "orders#thanks"
      get 'genres/:id/search' => 'searches#genre_search'
     resources :orders, only: [:new, :create, :index, :show]
-       root 'homes#top'
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+        root 'homes#top'
+        get "about" => "homes#about"
        resources :items, only:[:index, :show]
         resources :cart_items, only:[:create, :index, :update, :destroy] do
     collection do
@@ -81,9 +83,8 @@ Rails.application.routes.draw do
       get '/customers/unsubscribe', to: '/public/customers#unsubscribe', as: 'unsubscribe_customer'
       patch '/customers/withdraw', to: '/public/customers#withdraw', as: 'withdraw_customer'
 
-      resources :addresses, only: [:index, :create, :edit, :update, :destroy]
-      root to: "homes#top"
-      get "about" => "homes#about"
+
+
 
 
 
