@@ -66,7 +66,6 @@ Rails.application.routes.draw do
     get "orders/thanks" => "orders#thanks"
      get 'genres/:id/search' => 'searches#genre_search'
     resources :orders, only: [:new, :create, :index, :show]
-      # root 'homes#top'
        resources :items, only:[:index, :show]
         resources :cart_items, only:[:create, :index, :update, :destroy] do
     collection do
