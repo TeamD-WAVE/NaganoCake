@@ -4,41 +4,41 @@
   <div class='col-md-12'>
   <h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細 </h2>
 
-   <tr class="text-left">
-    <th>会員ID</th>
-    <td><%= @customer.id %></td>
-   </tr>
+   <div class='row'>
+    <th class='col-md-3 text-left'>会員ID</th>
+    <td class='col-md-9 text-left'><%= @customer.id %></td>
+   </div>
 
     <tr class="text-left">
      <th>氏名</th>
      <td><%= @customer.first_name %> <%= @customer.last_name %></td>
     </tr>
-    
+
     <tr class="text-left">
       <th>フリガナ</th>
       <td><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></td>
     </tr>
-    
+
     <tr class="text-left">
      <th>郵便番号</th>
      <td><%= @customer.postal_code %></td>
     </tr>
-    
+
     <tr class="text-left">
      <th>住所</th>
      <td><%= @customer.address %></td>
     </tr>
-    
+
     <tr class="text-left">
      <th>電話番号</th>
      <td><%= @customer.telephone_number %></td>
     </tr>
-    
+
     <tr class="text-left">
      <th>メールアドレス</th>
      <td><%= @customer.email %></td>
     </tr>
-    
+
     <tr class="text-left">
      <th>会員ステータス</th>
      <td class="<%= @customer.is_active ? 'text-success' : '' %>">
