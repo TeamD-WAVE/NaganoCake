@@ -9,7 +9,7 @@
 
     <h3>お届け先</h3>
     <p><%= f.radio_button :select_address, 0 %>ご自身の住所</p>
-    <%= current_customer.customer_address_display %>
+    <%= current_customer.address %>
     <p><%= f.radio_button :select_address, 1 %>登録済み住所から選択</p>
     <p><%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display) %></p>
     <p><%= f.radio_button :select_address, 2 %>新しいお届け先</p>
@@ -18,19 +18,19 @@
     <tr>
       <td>郵便番号</td>
       <td><%= f.text_field :postal_code %></td>
-      <p>〒<%= current_customer.postcode%><%=current_customer.name%></p>
+      <p>〒<%#= current_customer.postal_code%><%#=current_customer.name%></p>
     </tr>
 
     <tr>
       <td>住所</td>
       <td><%= f.text_field :address %></td>
-        <p><%=current_customer.address %></p>
+
     </tr>
 
     <tr>
       <td>宛名</td>
       <td><%= f.text_field :name %></td>
-      <p><%=current_customer.name%></p>
+
     </tr>
     </table>
       <%= f.submit "確認画面へ進む", style: "background-color: #007bff; color: #fff; border: none; padding: 0.5em 1em; cursor: pointer;" %>
