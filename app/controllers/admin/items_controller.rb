@@ -15,7 +15,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     # byebug
     @item.save
-    redirect_to admin_items_path
+    redirect_to admin_item_path(@item.id)
   end
 
   def show
