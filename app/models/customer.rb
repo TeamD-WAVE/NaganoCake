@@ -9,7 +9,9 @@ class Customer < ApplicationRecord
   has_many :orders
 
   def addresses
+
     postal_code + address + first_name + last_name
+
   end
 
  # def active_for_authentication?
