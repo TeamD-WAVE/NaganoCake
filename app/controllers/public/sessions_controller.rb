@@ -14,7 +14,7 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
   def after_sign_in_path_for(resource)
-   customer_my_page_path
+   root_path
   end
   # DELETE /resource/sign_out
   # def destroy
