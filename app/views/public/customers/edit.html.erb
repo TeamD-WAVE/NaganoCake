@@ -1,7 +1,6 @@
 <div class='container'>
  <div class='row'>
   <div class='col-md-12'>
-    <table class="table table-borderless">
 
   <div class='row'>
      <div class='col-md-1'></div>
@@ -13,7 +12,7 @@
 
   <div class="mb-4"></div>
 
-     <%= form_with model: @customer, url: information_path do |form| %>
+     <%= form_with model: @customer, url: information_path, local: true do |form| %>
      <%= render "public/shared/error_messages", resource: @customer %>
 
       <div class='row'>
@@ -52,9 +51,7 @@
       <div class='col-3'><h4><%= form.email_field :email, autofocus: true, autocomplete: "email" %></h4></div>
       <div class='col-6'></div>
      </div>
-    </table>
-　</div>
-　</div>
+
 
     <div class='row'>
       <div class="col-md-7 text-right">
@@ -62,7 +59,6 @@
        　　<%= form.submit "編集内容を保存", class:"btn btn-success btn-lg", style: "width: 50%" %>
      　　</div>
      　</div>
-
 
       <div class="col-md-4 text-right">
        <%= link_to unsubscribe_customer_path, class: "btn btn-danger btn-lg", style: "width: 50%" do %>
@@ -72,5 +68,7 @@
     </div>
 
   <% end %>
+</div>
+</div>
 </div>
 

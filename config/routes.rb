@@ -69,7 +69,7 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
         root 'homes#top'
         get "about" => "homes#about"
-    
+
        resources :items, only:[:index, :show]
         resources :cart_items, only:[:create, :index, :update, :destroy] do
     collection do
