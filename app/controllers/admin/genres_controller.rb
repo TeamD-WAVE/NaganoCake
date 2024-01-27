@@ -1,4 +1,5 @@
 class Admin::GenresController < ApplicationController
+  before_action :authenticate_admin!
   def create
     #データを受け取り新規登録するためのインスタンス作成
     genre = Genre.new(genre_params)
