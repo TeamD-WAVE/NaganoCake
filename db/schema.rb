@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2024_01_26_052847) do
     t.string "postal_code"
     t.string "address"
     t.string "telephone_number"
-    t.boolean "is_active", default: true
+    t.boolean "is_active"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

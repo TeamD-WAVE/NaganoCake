@@ -1,7 +1,7 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :caritem_nill, only: [:new, :create]
-  
+  before_action :cartitem_nill, only: [:new, :create]
+
   def confilm
     @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
       @order_new = Order.new
       render :confirm
   end
-  
+
   def create
       @order = Order.new
       @order.member_id = current_member.id
@@ -38,7 +38,7 @@ class Public::OrdersController < ApplicationController
       else
         @order.status = 0
       end
-      
+
       address_type = params[:order][:address_type]
       case address_type
       when "member_address"
@@ -56,7 +56,7 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:new_address]
       @order.name = params[:order][:new_name]
       end
-    
+
     if @order.save
       if @order.status == 0
         @cart_items.each do |cart_item|
@@ -72,7 +72,7 @@ class Public::OrdersController < ApplicationController
     else
       render :items
     end
-  end    
+  end
 
   def index
     @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc).page(params[:page])
@@ -90,14 +90,14 @@ class Public::OrdersController < ApplicationController
 
   def thanks
   end
-  
+
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment, :customer_id , :status)
   end
 
   def caritem_nill
     car_items = current_customer.car_items
-    if car_items.blank?
+    if cart_items.blank?
       redirect_to car_items_path
     end
   end
