@@ -8,7 +8,7 @@
             <th class="table-active">購入日時</th>
             <th class="table-active">購入者</th>
             <th class="table-active">注文個数</th>
-            <!--<th class="table-active">注文ステータス</th>-->
+            <th class="table-active">注文ステータス</th>
           </tr>
         </thead>
         <tbody>
@@ -29,6 +29,9 @@
                   <% @total_amount += order_detail.amount %>
                 <% end %>
                 <%= @total_amount %>
+             </td>
+             <td>
+                <%= order.status_i18n %>
              </td>
             </tr>
           <% end %>
