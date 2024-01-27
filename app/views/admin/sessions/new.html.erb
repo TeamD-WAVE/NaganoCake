@@ -14,18 +14,18 @@
 <%= form_with(model: resource, url: session_path(resource_name), local: true) do |f| %>
   <div class='row'>
     <div class='col-1'></div>
-    <div class='col-2'><h4><%= f.label :email %></h4></div>
+    <div class='col-4'><h4><%= f.label :email, "メールアドレス" %></h4></div>
     <div class='col-6'><h4><%= f.email_field :email, autofocus: true, autocomplete: "email" %></h4></div>
-    <div class='col-3'></div>
+    <div class='col-1'></div>
   </div>
 
     <div class="mb-3"></div>
 
   <div class='row'>
     <div class='col-1'></div>
-    <div class='col-2'><h4><%= f.label :password %></h4></div>
+    <div class='col-4'><h4><%= f.label :password, "パスワード" %></h4></div>
     <div class='col-6'><h4><%= f.password_field :password, autocomplete: "current-password" %></h4></div>
-    <div class='col-3'></div>
+    <div class='col-1'></div>
   </div>
 
    <div class="mb-4"></div>
