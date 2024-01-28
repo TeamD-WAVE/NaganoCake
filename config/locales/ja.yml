@@ -9,7 +9,7 @@ ja:
     order:
       status:
         wait_payment: "入金待ち"
-        confirm_payment: "入金完了"
+        confirm_payment: "入金確認"
         making: "製作中"
         preparing_ship: "発送準備中"
         finish_prepare: "発送済み"
