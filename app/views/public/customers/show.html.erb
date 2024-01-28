@@ -3,16 +3,17 @@
   <div class='row'>
      <div class='col-md-1'></div>
    <div class='col-3 text-center'>
+
+  <div class="mb-5"></div>
+
     <h3 class="table-active">マイページ</h3>
    </div>
    <div class='col-md-9'></div>
-
   </div>
 
   <div class="mb-4"></div>
 
    <div class='row'>
-
     <div class='col-md-2'><h3>登録情報</h3></div>
      <div class='col-md-3'>
        <%= link_to edit_customer_path(@customer), class: "btn btn-success btn-lg" do %>
@@ -73,25 +74,22 @@
 
    </table>
 
-  <div class="field">
-  <td>配送先</td>
-  <td>
-    <div class='row'>
-      <%= link_to addresses_path(@customer), class: "btn btn-outline-primary btn-block" do %>
+  <div class='row'>
+   <div class='col-md-2'><h3>配送先</h3></div>
+   <div class='col-md-3'><%= link_to addresses_path(@customer), class: "btn btn-primary btn-lg" do %>
       <i>一覧を見る</i>
-      <% end %>
+      <% end %></div>
+   <div class='col-md-7'></div>
     </div>
-  </td>
 
+  <div class="mb-4"></div>
 
-   <td>注文履歴</td>
-    <td>
-    <div class='row'>
-     <%= link_to orders_path, class: "btn btn-outline-primary btn-block" do %>
+  <div class='row'>
+   <div class='col-md-2'><h3>注文履歴</h3></div>
+   <div class='col-md-3'><%= link_to orders_path, class: "btn btn-primary btn-lg" do %>
      <i>一覧を見る</i>
-     <% end %>
-   </div>
-   </td>
+     <% end %></div>
+   <div class='col-md-7'></div>
   </div>
 
 
