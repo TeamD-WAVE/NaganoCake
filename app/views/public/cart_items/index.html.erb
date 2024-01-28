@@ -24,11 +24,7 @@
          <tbody>
             <tr>
                <td>
-                  <% if cart_item.item.image.attached? %>
-                    <%= image_tag cart_item.item.image, size: "100x100" %><br>
-                  <% else %>
-                    <%= image_tag 'no_image', size: "100x100" %><br>
-                  <% end %>
+                  <%= image_tag cart_item.item.image, size: "100x100" %><br>
                   <%= cart_item.item.name %>
                </td>
                <td><%= cart_item.item.add_tax_price %></td>

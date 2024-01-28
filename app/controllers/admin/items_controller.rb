@@ -14,8 +14,11 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     # byebug
-    @item.save
-    redirect_to admin_items_path
+    if @item.save
+      redirect_to admin_item_path(@item.id)
+    else
+      redirect_to request.referer
+    end
   end
 
   def show

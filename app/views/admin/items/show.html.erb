@@ -4,12 +4,7 @@
   </div>
   <div class="row">
     <div class="col-3 offset-1">
-      <%#= image_tag @item.get_image %>
-        <% if @item.image.attached? %>
-          <%= image_tag @item.image, size: "200x200" %>
-        <% else %>
-          <%= image_tag 'no_image', size: "200x200" %>
-        <% end %>
+      <%= image_tag @item.image, size: "200x200" %>
     </div>
     <div class="col-8">
       <table class="table">
