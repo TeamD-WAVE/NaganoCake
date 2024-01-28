@@ -17,9 +17,8 @@
             <div class="px-2">
               <%= link_to item_path(item.id) do %>
               <%= image_tag item.image, size: "200x150" %>
-                <%#=image_tag item.get_image(200,100) %>
-              <% end %>
               <p class="mx-2"><%= item.name %></p>
+              <% end %>
               <% if item.is_active == true %>
                 <p class="mx-2">¥ <%= item.price.to_s(:delimited) %></p>
               <% else %>
