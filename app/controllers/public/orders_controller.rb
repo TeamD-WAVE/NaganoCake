@@ -51,8 +51,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
-    @order_details = OrderDetail.where(order_id: @order.id)
+    if params[:id] == 'confirm'
+      # 'confirm' の場合のエラー処理や代替処理を行う
+      # 例: flashメッセージを設定してリダイレクトする
+      flash[:error] = 'Invalid order ID'
+      redirect_to request.referer
+    else
+      @order = Order.find(params[:id])
+      @order_details = OrderDetail.where(order_id: @order.id)
+    end
   end
 
   def thanks
