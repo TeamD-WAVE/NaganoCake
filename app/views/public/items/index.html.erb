@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <!--ジャンル選択のサイドバー-->
+      <%= render 'public/searches/genre' %>
+    </div>
+    <div class="col-9">
+      <div class="row">
+        <h4><strong>商品一覧(全<%= @items.count %>件)</strong></h4>
+      </div>
+      <div class="row">
+        <% @items.each do |item| %>
+        <div class="col-3">
+          <%= link_to item_path(item.id) do %><br>
+            <%= image_tag item.image, size: "100x100" %><br>
+            <%= item.name %><br>
+          <% end %>
+          <% if item.is_active %>
+            ¥<%= item.price %>
+          <% elsif %>
+            <strong class="text-danger">販売停止中</strong>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 offset-6 mt-5">
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>

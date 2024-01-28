@@ -1,29 +1,111 @@
-<h2>Sign up</h2>
+<div class='container'>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class='row'>
+     <div class='col-md-1'></div>
+   <div class='col-3 text-center'>
+    <h3 class="table-active">新規会員登録</h3>
+   </div>
+   <div class='col-md-8'></div>
+   </div>
+  <div class="mb-5"></div>
+
+  <%= form_with model: @customer, url: customer_registration_path, local: true do |form| %>
+  <%= render "public/shared/error_messages", resource: @customer %>
+
+  <div class='row'>
+    <div class='col-2'><%= form.label :first_name, "名前" %></div>
+    <div class='col-1 text-right'>（姓）</div>
+    <div class='col-4'><%= form.text_field :first_name, style: "width: 90%" %></div>
+    <div class='col-1 text-right'><%= form.label :last_name, "（名）" %></div>
+    <div class='col-4'><%= form.text_field :last_name, style: "width: 90%" %></div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="mb-2"></div>
+
+  <div class='row'>
+     <div class='col-2'><%= form.label :first_name_kana, "フリガナ" %></div>
+     <div class='col-1 text-right'>（セイ）</div>
+     <div class='col-4'><%= form.text_field :first_name_kana, style: "width: 90%" %></h4></div>
+     <div class='col-1 text-right'><%= form.label :last_name_kana, "（メイ）" %></div>
+     <div class='col-4'><%= form.text_field :last_name_kana, style: "width: 90%" %></div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="mb-2"></div>
+
+  <div class='row'>
+     <div class='col-3'><%= form.label :email, "メールアドレス" %></h4></div>
+     <div class='col-4'><%= form.email_field :email, autofocus: true, autocomplete: "email", style: "width: 90%" %></div>
+     <div class='col-5'></div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+  <div class="mb-2"></div>
 
-<%= render "public/shared/links" %>
+  <div class='row'>
+     <div class='col-3'><%= form.label :postal_code, "郵便番号(ハイフンなし)" %></div>
+     <div class='col-4'><%= form.text_field :postal_code, style: "width: 90%" %></div>
+     <div class='col-5'></div>
+  </div>
+
+  <div class="mb-2"></div>
+
+  <div class='row'>
+     <div class='col-3'><%= form.label :address, "住所" %></div>
+     <div class='col-9'><%= form.text_field :address, style: "width: 95%" %></div>
+  </div>
+
+  <div class="mb-2"></div>
+
+  <div class='row'>
+    <div class='col-3'><%= form.label :telephone_number, "電話番号(ハイフンなし)" %></div>
+    <div class='col-4'><%= form.text_field :telephone_number, style: "width: 90%" %></div>
+    <div class='col-5'></div>
+  </div>
+
+  <div class="mb-2"></div>
+
+  <div class='row'>
+    <div class='col-3'><%= form.label :password, "パスワード(6文字以上)" %></div>
+    <div class='col-4'><%= form.password_field :password, autocomplete: "new-password", style: "width: 90%" %></div>
+    <div class='col-5'></div>
+  </div>
+
+  <div class="mb-2"></div>
+
+  <div class='row'>
+    <div class='col-3'><%= form.label :password_confirmation, "パスワード(確認用)" %></div>
+    <div class='col-4'><%= form.password_field :password_confirmation, autocomplete: "new-password", style: "width: 90%" %></div>
+    <div class='col-5'></div>
+  </div>
+
+  <div class="mb-3"></div>
+
+  <div class='row'>
+    <div class='col-3'></div>
+    <div class="col-4">
+    <div class="actions">
+     <%= form.submit "新規登録", class: 'btn btn-success btn-lg', style: "width: 80%"  %>
+    </div>
+    </div>
+  </div>
+ <% end %>
+ </div>
+
+<div class="mb-3"></div>
+
+  <div class='row'>
+     <div class='col-md-1'></div>
+   <div class='col-3 text-center'>
+    <h3 class="table-active">既に登録済みの方</h3>
+   </div>
+   <div class='col-md-8'></div>
+   </div>
+
+<div class="mb-3"></div>
+
+  <div class='row'>
+    <div class='col-md-2'></div>
+   <div class='col-5'><h5><%= render "public/shared/links" %> からログインしてください。</h5></div>
+   <div class='col-5'></div>
+   </div>
+
